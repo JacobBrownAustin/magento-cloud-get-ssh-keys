@@ -12,12 +12,12 @@ CMD bash -c "source ~/.bashrc \
 &&  echo Starting ncat for port forwarding \
 && (ncat -k -l 0.0.0.0 5001 --sh-exec \"ncat localhost 5000\" &) \
 && echo Logging into magento-cloud.  Now is good time to run this. xdg-open http://127.0.0.1:5000 \
-&& magento-cloud login \
-&&  echo Creating ssh certificate \
-&& magento-cloud ssh-cert:load -y \
+&& echo \"N\nN\nN\n\" | script -e -f -c 'magento-cloud  login' \
+&&  echo Copying certificate files to bind mount \
+&& cp -f /root/.magento-cloud/.session/sess-cli-default/ssh/* /bind/ \
 &&  echo Fixing permissions for certificate \
-&& USERID=$(stat -c \"%u\" /root/.magento-cloud/.session/sess-cli-default/ssh/) \
-&& GROUPID=$(stat -c \"%g\" /root/.magento-cloud/.session/sess-cli-default/ssh/) \
-&& chown -R \$USERID:\$GROUPID /root/.magento-cloud/.session/sess-cli-default/ssh/ \
+&& USERID=$(stat -c \"%u\" /bind/) \
+&& GROUPID=$(stat -c \"%g\" /bind/) \
+&& chown -R \$USERID:\$GROUPID /bind/ \
 && echo Done!"
 

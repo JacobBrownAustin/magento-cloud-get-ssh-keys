@@ -28,5 +28,5 @@ Host *.magento.cloud
 ## Run the docker image to create or update ssh keys and launch web browser to login to Magento Cloud
 
 ```
-((sleep 3 ; xdg-open http://127.0.0.1:5000 ) &) ; docker run --mount type=bind,source="$HOME"/.magento-cloud.ssh,target=/root/.magento-cloud/.session/sess-cli-default/ssh/ -p 5000:5001 -ti  magento-cloud-get-ssh-keys
+((sleep 3 ; xdg-open http://127.0.0.1:5000 ) &) ; docker run --mount type=bind,source="$HOME"/.magento-cloud.ssh,target=/bind/ -p 5000:5001 -ti  magento-cloud-get-ssh-keys
 ```
