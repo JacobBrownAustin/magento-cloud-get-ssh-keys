@@ -18,8 +18,8 @@ mkdir ~/.magento-cloud.ssh/
 add this to your ~/.ssh/config
 ```
 Host *.magento.cloud
-  CertificateFile ~/.magento-cloud.ssh/id_rsa-cert.pub
-  IdentityFile ~/.magento-cloud.ssh/id_rsa
+  CertificateFile ~/.magento-cloud.ssh/id_ed25519-cert.pub
+  IdentityFile ~/.magento-cloud.ssh/id_ed25519
 
 ```
 
